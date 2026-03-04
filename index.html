@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>磨煤机冷热风实时仿真（初始值随参数动态计算）</title>
+    <title>磨煤机冷热风实时仿真</title>
     <!-- 引入 Chart.js 4.4.0 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
@@ -17,32 +17,32 @@
             padding: 0;
             color: #333;
         }
-        .container {
-            max-width: 1400px;
+        .容器 {
+            最大宽度: 1400像素;
             margin: 0 auto;
-            background-color: white;
-            border-radius: 10px;
+            背景颜色: 白色;
+            边框圆角: 10像素;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            padding: 20px;
+            内边距: 20像素;
         }
         h1 {
             text-align: center;
             color: #2c3e50;
-            margin-top: 0;
+            上边距: 0;
             margin-bottom: 20px;
         }
-        .control-panel {
+        .控制面板 {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
+            间距: 30像素;
             margin-bottom: 30px;
-            padding: 20px;
+            内边距: 20像素;
             background-color: #ecf0f1;
             border-radius: 8px;
         }
-        .mode-section {
-            flex: 1;
-            min-width: 250px;
+        .模式部分 {
+            弹性: 1;
+            最小宽度: 250像素;
             background: white;
             padding: 15px;
             border-radius: 6px;
@@ -188,9 +188,9 @@
             font-size: 14px;
         }
         .note {
-            font-size: 0.9em;
-            color: #e67e22;
-            margin-top: 5px;
+            字体大小: 0.9em;
+            颜色: #e67e22;
+            上边距: 5像素;
         }
     </style>
 </head>
@@ -223,7 +223,7 @@
                 <input type="number" id="auto_sp_temp" min="0" max="200" step="0.1" value="85.0">
             </div>
             <div class="input-group">
-                <label>风量设定 (m³/h)</label>
+                风量设定 (m³/h)</>
                 <input type="number" id="auto_sp_flow" min="0" max="200" step="0.1" value="140.0">
             </div>
             <button id="set_auto_btn">🎯 切换到自动并应用</button>
@@ -236,11 +236,11 @@
             <div><strong>当前模式：</strong><span id="mode_display">手动</span></div>
             <div><strong>仿真时间：</strong><span id="time_display">0</span> s</div>
             <div><strong>温度：</strong><span id="temp_display">--</span> ℃</div>
-            <div><strong>风量：</strong><span id="flow_display">--</span> m³/h</div>
+            <div><strong>风量：</strong><span id="flow_display">--</span>吨/小时</div>
             <div><strong>冷风门：</strong><span id="cold_display">10.0</span> %</div>
             <div><strong>热风门：</strong><span id="hot_display">0.0</span> %</div>
             <div><strong>设定温度：</strong><span id="sp_temp_display">--</span> ℃</div>
-            <div><strong>设定风量：</strong><span id="sp_flow_display">--</span> m³/h</div>
+            <div><strong>设定风量：</strong><span id="sp_flow_display">--</span> ton/h</div>
             <button id="reset_btn" class="danger">重置仿真</button>
         </div>
     </div>
@@ -314,11 +314,11 @@
     <!-- 四个实时曲线 (2分钟滚动，纵坐标固定) -->
     <div class="charts">
         <div class="chart-container">
-            <h3>🌡️ 温度响应 (℃)</h3>
+            <h3>温度响应 (℃)</h3>
             <canvas id="chart_temp"></canvas>
         </div>
         <div class="chart-container">
-            <h3>💨 风量响应 (m³/h)</h3>
+            <h3>💨 风量响应 (ton/h)</h3>
             <canvas id="chart_flow"></canvas>
         </div>
         <div class="chart-container">
@@ -341,25 +341,25 @@
                 <div class="param-item"><label>τ温度(s):</label><input type="number" id="model_tau_T" step="0.1" value="25.0" min="1"></div>
                 <div class="param-item"><label>τ风量(s):</label><input type="number" id="model_tau_Q" step="0.1" value="10.0" min="1"></div>
                 <div class="param-item"><label>K_loss:</label><input type="number" id="model_K_loss" step="0.01" value="0.1" min="0"></div>
-                <div class="param-item"><label>T_cold(℃):</label><input type="number" id="model_T_cold" step="0.1" value="26.0"></div>
-                <div class="param-item"><label>T_hot(℃):</label><input type="number" id="model_T_hot" step="0.1" value="320.0"></div>
-                <div class="param-item"><label>T_amb(℃):</label><input type="number" id="model_T_amb" step="0.1" value="25.0"></div>
+                T_cold(℃):</>
+                T_热(℃):</>
+                T_amb(℃):</>
             </div>
             <!-- 第二组：阀门特性 (默认 K_c=1.0, K_h=0.3) -->
             <div class="param-category">
                 <h4>阀门特性</h4>
-                <div class="param-item"><label>K_c:</label><input type="number" id="model_K_c" step="0.1" value="1.0" min="0"></div>
-                <div class="param-item"><label>K_h:</label><input type="number" id="model_K_h" step="0.1" value="0.3" min="0"></div>
-                <div class="param-item"><label>阀延时(s):</label><input type="number" id="model_valve_tau" step="0.1" value="5.0" min="0"></div>
-                <div class="param-item"><label>死区:</label><input type="number" id="model_valve_deadzone" step="0.01" value="0.05" min="0" max="1"></div>
-                <div class="param-item"><label>随机波动:</label><input type="number" id="model_valve_random_scale" step="0.01" value="0.02" min="0"></div>
+K_c:
+                K_h:</>
+                阀延时(s):</>
+div class="param-item"死区:inputtype="number"id"model_valve_deadzone"step"0.01"value"0.05"min"0"max"1"div
+                随机波动:</>
             </div>
             <!-- 第三组：噪声与滤波 -->
             <div class="param-category">
                 <h4>噪声 & 滤波</h4>
-                <div class="param-item"><label>噪声温度:</label><input type="number" id="model_noise_std_temp" step="0.1" value="0.2" min="0"></div>
-                <div class="param-item"><label>噪声风量:</label><input type="number" id="model_noise_std_flow" step="0.1" value="0.5" min="0"></div>
-                <div class="param-item"><label>滤波τ:</label><input type="number" id="model_filter_tau" step="0.1" value="5.0" min="0.1"></div>
+                噪声温度:</>
+标签噪声风量:
+                滤波τ:</>
                 <!-- 占位保持布局 -->
                 <div class="param-item" style="visibility: hidden;"><label> </label><input type="text" style="display:none;"></div>
             </div>
@@ -376,7 +376,7 @@
 
     <div class="footer">
         * 仿真步长1秒，显示最近120秒数据（2分钟）。手动/自动切换时PID状态自动初始化。<br>
-        温度曲线纵坐标0~200℃，风量曲线0~200 m³/h，阀门曲线0~100%，固定范围。手动模式下设定值曲线等于实际值。
+        温度曲线纵坐标0~200℃，风量曲线0~200 ton/h，阀门曲线0~100%，固定范围。手动模式下设定值曲线等于实际值。
     </div>
 </div>
 
@@ -387,8 +387,8 @@
             tau_T: 25.0, tau_Q: 10.0, K_loss: 0.1,
             T_cold: 26.0, T_hot: 320.0, T_amb: 25.0,
             K_c: 1.0, K_h: 0.3,                     // 修改后的默认值
-            valve_tau: 5.0, dt: 1.0,
-            valve_deadzone: 0.05, valve_random_scale: 0.02,
+            阀门_tau: 5.0, dt: 1.0,
+            阀门死区: 0.05, 阀门随机缩放: 0.02,
             noise_std_temp: 0.2, noise_std_flow: 0.5,
             filter_tau: 5.0
         };
