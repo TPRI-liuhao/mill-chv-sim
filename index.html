@@ -254,11 +254,11 @@
                 <h4>温度 PID</h4>
                 <div class="param-item">
                     <label>Kp:</label>
-                    <input type="number" id="pid_T_Kp" step="0.01" value="0.4">
+                    <input type="number" id="pid_T_Kp" step="0.01" value="0.1">
                 </div>
                 <div class="param-item">
                     <label>Ti (s):</label>
-                    <input type="number" id="pid_T_Ti" step="0.1" value="80.0">
+                    <input type="number" id="pid_T_Ti" step="0.1" value="100.0">
                 </div>
                 <div class="param-item">
                     <label>Kd:</label>
@@ -274,7 +274,7 @@
                 </div>
                 <div class="param-item">
                     <label>Ti (s):</label>
-                    <input type="number" id="pid_Q_Ti" step="0.1" value="50.0">
+                    <input type="number" id="pid_Q_Ti" step="0.1" value="20.0">
                 </div>
                 <div class="param-item">
                     <label>Kd:</label>
@@ -395,11 +395,11 @@
 
         // 可变控制参数（初始默认值）
         let PID = {
-            Kp_T: 0.4,
-            Ti_T: 80.0,
+            Kp_T: 0.1,
+            Ti_T: 100.0,
             Kd_T: 0.0,
             Kp_Q: 0.8,
-            Ti_Q: 50.0,
+            Ti_Q: 20.0,
             Kd_Q: 0.0
         };
 
