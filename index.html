@@ -705,7 +705,7 @@
                         { label: '设定风量', data: chartData.sp_flow, borderColor: 'red', borderDash: [5,5], backgroundColor: 'transparent', tension: 0.2 }
                     ]
                 },
-                options: { ...commonOptions, scales: { y: { min: 0, max: 200, title: { display: true, text: 'ton/h' } } } }
+                options: { ...commonOptions, scales: { y: { min: 0, max: 150, title: { display: true, text: 't/h' } } } }
             });
 
             const ctxCold = document.getElementById('chart_cold').getContext('2d');
