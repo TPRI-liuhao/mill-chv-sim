@@ -223,7 +223,7 @@
                 <input type="number" id="auto_sp_temp" min="0" max="200" step="0.1" value="85.0">
             </div>
             <div class="input-group">
-                <label>风量设定 (ton/h)</label>
+                <label>风量设定 (t/h)</label>
                 <input type="number" id="auto_sp_flow" min="0" max="200" step="0.1" value="140.0">
             </div>
             <button id="set_auto_btn">🎯 切换到自动并应用</button>
@@ -236,11 +236,11 @@
             <div><strong>当前模式：</strong><span id="mode_display">手动</span></div>
             <div><strong>仿真时间：</strong><span id="time_display">0</span> s</div>
             <div><strong>温度：</strong><span id="temp_display">--</span> ℃</div>
-            <div><strong>风量：</strong><span id="flow_display">--</span> ton/h</div>
+            <div><strong>风量：</strong><span id="flow_display">--</span> t/h</div>
             <div><strong>冷风门：</strong><span id="cold_display">10.0</span> %</div>
             <div><strong>热风门：</strong><span id="hot_display">0.0</span> %</div>
             <div><strong>设定温度：</strong><span id="sp_temp_display">--</span> ℃</div>
-            <div><strong>设定风量：</strong><span id="sp_flow_display">--</span> ton/h</div>
+            <div><strong>设定风量：</strong><span id="sp_flow_display">--</span> t/h</div>
             <button id="reset_btn" class="danger">重置仿真</button>
         </div>
     </div>
@@ -318,7 +318,7 @@
             <canvas id="chart_temp"></canvas>
         </div>
         <div class="chart-container">
-            <h3>💨 风量响应 (ton/h)</h3>
+            <h3>💨 风量响应 (t/h)</h3>
             <canvas id="chart_flow"></canvas>
         </div>
         <div class="chart-container">
@@ -376,7 +376,7 @@
 
     <div class="footer">
         * 仿真步长1秒，显示最近120秒数据（2分钟）。手动/自动切换时PID状态自动初始化。<br>
-        温度曲线纵坐标0~150℃，风量曲线0~200 ton/h，阀门曲线0~100%，固定范围。手动模式下设定值曲线等于实际值。
+        温度曲线纵坐标0~150℃，风量曲线0~150 t/h，阀门曲线0~100%，固定范围。手动模式下设定值曲线等于实际值。
     </div>
 </div>
 
